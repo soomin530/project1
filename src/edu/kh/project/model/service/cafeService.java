@@ -44,7 +44,7 @@ public class cafeService {
 			
 				do {
 					
-					System.out.println("*** [ 수민 카페 ] ***");
+					System.out.println("*** 안녕하세요~! 수민 카페에 오신 것을 환영합니다! ***\n");
 					System.out.println("1. 메뉴 조회");
 					System.out.println("2. 메뉴 주문");
 					System.out.println("3. 메뉴 추가");
@@ -52,7 +52,7 @@ public class cafeService {
 					System.out.println("5. 메뉴 삭제");
 					System.out.println("0. 프로그램 종료");
 					
-					System.out.print("\n선택 (번호로 입력해주세요!) : ");
+					System.out.print("\n원하는 번호를 선택해 입력해주세요! : ");
 				
 					menuNum = sc.nextInt();
 					
@@ -61,9 +61,9 @@ public class cafeService {
 					case 2 : myOrder(); break;
 					case 3 : System.out.println(addMenu()); break;
 					case 4 : System.out.println(modifyMenu()); break;
-					case 5 : System.out.println(removeMenu()); break; */
-					case 0 : System.out.println("종료되었습니다."); break;
-					default : System.out.println("메뉴에 있는 번호만 입력해주세요.\n"); break;				
+					case 5 : System.out.println(removeMenu()); break; 
+					case 0 : System.out.println("감사합니다~! 안녕히 가세요!"); break;
+					default : System.out.println("화면에 있는 번호만 입력해주시면 감사하겠습니다 ㅜ ㅜ\n"); break;				
 					
 					}
 					
@@ -82,8 +82,8 @@ public class cafeService {
 		 */
 		public void displayAllMenu(List<Cafe> list) {
 			
-			//flag 해서 true 일 때 -- 수민 카페 메뉴 -- 뜨게 하기
-			// false면 메뉴만 뜨게 하기
+			// flag = true 일 때 "-- 수민 카페 메뉴 --" 뜨게 하기
+			// false면 "-- 수민 카페 메뉴 --" 없이 메뉴만 뜨게 하기
 			
 			
 			if(true)System.out.println("\n-- 수민 카페 메뉴 --");
@@ -106,9 +106,9 @@ public class cafeService {
 		public void myOrder() {
 			System.out.println("\n-- 메뉴 주문 --");
 			
-			displayAllMenu(drink); // false일 때 -- 수민 카페 메뉴 -- 안 뜨게 하기
+			displayAllMenu(drink); // false. -- 수민 카페 메뉴 -- 안 뜨게 하기
 			
-			System.out.print("주문하실 음료를 선택해주세요. (번호로 입력해주세요!) : ");
+			System.out.print("주문하실 메뉴의 번호를 입력해주세요! : ");
 			int orderDrink = sc.nextInt();
 			
 			boolean flag = true;
@@ -118,13 +118,13 @@ public class cafeService {
 				if(cafe.getMenuNum()==orderDrink) {
 					flag = false;
 					order.add(cafe);
-					System.out.println(cafe.getMenuName() + " 주문 완료 ~!\n");
+					System.out.println(cafe.getMenuName() + " 주문이 완료되었습니다~! 금방 만들어드리겠습니다!\n");
 					break;
 				}
 			}
 			
 			// 메뉴판에 없는 메뉴번호 입력 시 메뉴판에 있는 메뉴만 입력해주세요 출력
-			if(flag) System.out.println("일치하는 메뉴 번호가 없습니다.");
+			if(flag) System.out.println("\n일치하는 메뉴 번호가 없습니다 ㅜ ㅜ..\n확인 후 재주문 부탁드리겠습니다 :)\n");
 			
 		
 		}
@@ -150,7 +150,7 @@ public class cafeService {
 			Cafe newMenu = new Cafe(menuName, price, mainIngredients, menuNum);
 			drink.add(newMenu);
 			
-			return "등록 완료";
+			return "신메뉴 등록 완료.\n";
 			
 		}
 		
@@ -159,7 +159,7 @@ public class cafeService {
 		 */
 		public String modifyMenu() {
 		
-			displayAllMenu(drink); // false일 때 -- 수민 카페 메뉴 -- 안 뜨게 하기
+			displayAllMenu(drink); // false. -- 수민 카페 메뉴 -- 안 뜨게 하기
 			
 			System.out.println("\n-- 메뉴 변경 --");
 			
@@ -213,13 +213,13 @@ public class cafeService {
 			if(flag) {
 				return "일치하는 메뉴 번호가 없습니다.";
 			}
-			return "수정 완료 ~";
+			return "수정 완료 ~\n";
 		}
 		
 		public String removeMenu() {
 			System.out.println("\n-- 메뉴 삭제 --");
 			
-			displayAllMenu(drink); // false일 때 -- 수민 카페 메뉴 -- 안 뜨게 하기
+			displayAllMenu(drink); // false. -- 수민 카페 메뉴 -- 안 뜨게 하기
 			
 			System.out.print("삭제할 메뉴의 번호를 입력해주세요 : ");
 			int delet = sc.nextInt();
@@ -229,7 +229,7 @@ public class cafeService {
 				if(temp.getMenuNum() == delet) {
 					int index = drink.indexOf(temp);
 					
-					System.out.println("정말 삭제하시겠습니까? (Y/N) : ");
+					System.out.print("정말 삭제하시겠습니까? (Y/N) : ");
 					
 					char answer = sc.next().toUpperCase().charAt(0);
 					
@@ -237,11 +237,11 @@ public class cafeService {
 						drink.remove(index);
 						break;
 					} else {
-						return "취소";
+						return "취소\n";
 					}
 				}
 			}
 			
-			return "메뉴가 삭제되었습니다.";
+			return "메뉴가 삭제되었습니다.\n";
 		}
 }
