@@ -85,8 +85,14 @@ public class cafeService {
 			// flag = true 일 때 "-- 수민 카페 메뉴 --" 뜨게 하기
 			// false면 "-- 수민 카페 메뉴 --" 없이 메뉴만 뜨게 하기
 			
+			// boolean flag = true;
+			// if(true)System.out.println("\n-- 수민 카페 메뉴 --");
 			
-			if(true)System.out.println("\n-- 수민 카페 메뉴 --");
+			// --> 하려고 했는데 flag를 지정? 해도
+			// 밑에서 drink를 if(false)로 찍었을 때 아예 등록한 메뉴가 뜨지 않거나 해서 안 하게 됐습니다 ㅜ ㅜ
+			
+			
+			System.out.println("\n-- 수민 카페 메뉴 --");
 			
 			if(list.isEmpty()) {
 				System.out.println("추가한 음료가 없습니다. 음료를 등록해주세요.");
@@ -106,14 +112,16 @@ public class cafeService {
 		public void myOrder() {
 			System.out.println("\n-- 메뉴 주문 --");
 			
-			displayAllMenu(drink); // false. -- 수민 카페 메뉴 -- 안 뜨게 하기
+			// false. -- 수민 카페 메뉴 -- 안 뜨게 하기
+			// if(false)System.out.println(drink);
+			
+			displayAllMenu(drink); 
 			
 			System.out.print("주문하실 메뉴의 번호를 입력해주세요! : ");
 			int orderDrink = sc.nextInt();
 			
 			boolean flag = true;
 			
-			// for문 안에 if 문으로 flag false시 주문한 메뉴명 + 주문 성공 출력 띄우기
 			for(Cafe cafe : drink) {
 				if(cafe.getMenuNum()==orderDrink) {
 					flag = false;
@@ -184,7 +192,6 @@ public class cafeService {
 					
 					editMenu = sc.nextInt();
 					
-					// 수정 하나 끝나고 종료되지 않고 추가로 수정할 번호를 받을 수 있게 하기
 					switch (editMenu) {
 					case 1: System.out.println("\n>> 메뉴명 수정<<");
 							System.out.print("수정할 메뉴명을 입력해주세요 : ");
